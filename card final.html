@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squid Game Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            margin: 0;
+        }
+
+        .card-container {
+            width: 340px; /* Matches 9 cm */
+            height: 190px; /* Matches 5 cm */
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .card.flip {
+            transform: rotateY(180deg);
+        }
+
+        .card-side {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 0; /* Removes rounded corners */
+        }
+
+        .front {
+            background: url('front.png') no-repeat center/cover;
+        }
+
+        .back {
+            background: url('back.png') no-repeat center/cover;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card" id="card">
+            <img class="card-side front" src="front.png" alt="Front Image">
+            <img class="card-side back" src="back.png" alt="Back Image">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("card").addEventListener("click", function () {
+            this.classList.toggle("flip");
+        });
+    </script>
+
+</body>
+</html>
